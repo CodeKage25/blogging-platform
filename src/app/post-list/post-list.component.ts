@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { Store } from '@ngrx/store';
+import { DataService } from '../data.service';
 import * as postsActions from '../state/post.action';
 import * as fromPosts from '../state/post.reducer';
 
@@ -18,11 +19,10 @@ export class PostListComponent implements OnInit {
     private store: Store<fromPosts.State>) {}
 
 
-    ngOnInit(): void {
-      this.store.dispatch(postsActions.loadPosts());
-    }  
 
   ngOnInit(): void {
+    this.store.dispatch(postsActions.loadPosts());
+    
     this.dataService.getPosts().subscribe((data) => {
       this.posts = data;
       this.filteredPosts = [...this.posts]; // Initialize filteredPosts with all posts

@@ -1,9 +1,17 @@
 import { createReducer, on } from '@ngrx/store';
-import * as postsActions from './posts.actions';
+import * as postsActions from './post.action';
+import { Post } from './post.model';
 
-export const initialState: any[] = [];
+export interface State {
+    // Define your state properties here
+    posts: Post[];
+  }
+  
+export const initialState: State = {
+    posts: [],
+  };
 
-export const postsReducer = createReducer(
-  initialState,
-  on(postsActions.loadPosts, (state, { posts }) => [...posts])
-);
+  export const postReducer = createReducer(
+    initialState,
+    on(postsActions.loadPostsSuccess, (state, { posts }) => ({ ...state, posts })),
+  );

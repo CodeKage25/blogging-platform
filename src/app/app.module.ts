@@ -1,5 +1,3 @@
-// app.module.ts
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +12,7 @@ import { DataService } from './data.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { postReducer } from './state/post.reducer';
-import { PostEffects } from './state/post.effects';
+import { PostsEffects } from './state/post.effects';
 import { GlobalStyle } from './styles';
 
 @NgModule({
@@ -31,7 +29,7 @@ import { GlobalStyle } from './styles';
     FormsModule,
     AppRoutingModule,
     StoreModule.forRoot({ posts: postReducer }),
-    EffectsModule.forRoot([PostEffects]), StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([PostsEffects]), StoreModule.forRoot({}, {}),
   ],
   providers: [DataService],
   bootstrap: [AppComponent],
