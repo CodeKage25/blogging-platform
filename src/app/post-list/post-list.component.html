@@ -1,1 +1,6 @@
-<p>post-list works!</p>
+<input [(ngModel)]="searchTerm" placeholder="Search by title" />
+<button (click)="searchPosts()">Search</button>
+
+<div *ngFor="let post of filteredPosts">
+  <!-- Display post details (title, content, timestamp) -->
+</div>

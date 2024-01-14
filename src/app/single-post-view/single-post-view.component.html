@@ -1,1 +1,5 @@
-<p>single-post-view works!</p>
+<div *ngIf="post">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    <!-- Display other post details (timestamp, etc.) -->
+  </div>
