@@ -2,5 +2,21 @@
 <button (click)="searchPosts()">Search</button>
 
 <div *ngFor="let post of filteredPosts">
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-8">
+            <input [(ngModel)]="searchTerm" placeholder="Search by title" class="form-control mb-3" />
+            <button (click)="searchPosts()" class="btn btn-primary mb-3">Search</button>
+      
+            <div *ngFor="let post of filteredPosts" class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.content }}</p>
+                <!-- Display other post details (timestamp, etc.) -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   <!-- Display post details (title, content, timestamp) -->
 </div>

@@ -14,6 +14,10 @@ export class DataService {
     return this.http.get<any>(`${this.apiUrl}/posts`);
   }
 
+  getPostById(postId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/posts/${postId}`);
+  }
+
   createPost(postData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/posts`, postData);
   }

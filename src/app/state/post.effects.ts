@@ -8,7 +8,7 @@ import * as postsActions from './post.action';
 export class PostsEffects {
   loadPosts$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(postsActions.loadPosts),
+      ofType(postsActions.loadPostsSuccess),
       mergeMap(() =>
         this.dataService.getPosts().pipe(
           map((posts) => postsActions.loadPostsSuccess({ posts }))

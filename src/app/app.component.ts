@@ -6,11 +6,11 @@ import { GlobalStyle } from './styles';
   templateUrl: './app.component.html',
   template: `
     <div>
-      <router-outlet></router-outlet>
-      <GlobalStyle />
+    <app-post-list></app-post-list>
     </div>
   `,
-  styleUrl: './app.component.scss'
+  // styleUrl: ,
+  styles: [GlobalStyle],
 })
 export class AppComponent {
   title = 'blogging-platform';
