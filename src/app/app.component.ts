@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { GlobalStyle } from './styles';
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  
+`;
 
 @Component({
   selector: 'app-root',

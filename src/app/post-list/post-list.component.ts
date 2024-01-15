@@ -21,11 +21,11 @@ export class PostListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.store.dispatch(postsActions.loadPostsSuccess());
-
+    
     this.dataService.getPosts().subscribe((data) => {
       this.posts = data;
       this.filteredPosts = [...this.posts]; // Initialize filteredPosts with all posts
+      this.store.dispatch(postsActions.loadPostsSuccess({ posts: this.posts }));
     });
   }
 
