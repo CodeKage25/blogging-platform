@@ -13,7 +13,6 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { postReducer } from './state/post.reducer';
 import { PostsEffects } from './state/post.effects';
-import { GlobalStyle } from './styles';
 
 @NgModule({
   declarations: [

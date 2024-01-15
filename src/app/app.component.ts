@@ -1,9 +1,4 @@
 import { Component } from '@angular/core';
-import { createGlobalStyle } from 'styled-components';
-
-const GlobalStyle = createGlobalStyle`
-  
-`;
 
 @Component({
   selector: 'app-root',
@@ -14,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     </div>
   `,
   // styleUrl: ,
-  styles: [GlobalStyle],
+  styles: [],
 })
 export class AppComponent {
   title = 'blogging-platform';
