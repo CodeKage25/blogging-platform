@@ -12,7 +12,8 @@
               <div class="card-body">
                 <h5 class="card-title">{{ post.title }}</h5>
                 <p class="card-text">{{ post.content }}</p>
-                <!-- Display other post details (timestamp, etc.) -->
+                <button (click)="editPost(post)">Edit</button>
+  <button (click)="deletePost(post.id)">Delete</button>
               </div>
             </div>
           </div>

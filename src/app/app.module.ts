@@ -13,6 +13,10 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { postReducer } from './state/post.reducer';
 import { PostsEffects } from './state/post.effects';
+import { PostFormComponent } from './post-form/post-form.component';
+import { QuillModule } from 'ngx-quill';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +25,28 @@ import { PostsEffects } from './state/post.effects';
     SinglePostViewComponent,
     TextEditorComponent,
     CommentsComponent,
+    PostFormComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    QuillModule.forRoot({
+      modules: {
+        toolbar: [
+          ['bold', 'italic', 'underline', 'strike'],
+          ['blockquote', 'code-block'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          [{ header: [1, 2, 3, 4, 5, 6, false] }],
+          [{ color: [] }, { background: [] }],
+          ['link'],
+          ['clean'],
+        ],
+      },
+    }),
     StoreModule.forRoot({ posts: postReducer }),
     EffectsModule.forRoot([PostsEffects]), StoreModule.forRoot({}, {}),
   ],

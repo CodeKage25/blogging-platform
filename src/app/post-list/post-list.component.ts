@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { DataService } from '../data.service';
 import * as postsActions from '../state/post.action';
+import { Post } from '../state/post.model';
 import * as fromPosts from '../state/post.reducer';
 
 @Component({
@@ -11,6 +12,7 @@ import * as fromPosts from '../state/post.reducer';
 })
 export class PostListComponent implements OnInit {
   posts: any[] = [];
+  selectedPost: Post | null = null;
   filteredPosts: any[] = [];
   searchTerm: string = '';
 
@@ -26,7 +28,16 @@ export class PostListComponent implements OnInit {
       this.posts = data;
       this.filteredPosts = [...this.posts]; // Initialize filteredPosts with all posts
       this.store.dispatch(postsActions.loadPostsSuccess({ posts: this.posts }));
+      this.store.select(fromPosts.getPosts).subscribe((posts) => (this.posts = posts));
     });
+  }
+
+  editPost(post: Post): void {
+    this.selectedPost = post;
+  }
+
+  deletePost(postId: number): void {
+    this.store.dispatch(postsActions.deletePost({ postId }));
   }
 
   searchPosts(): void {
@@ -38,4 +49,5 @@ export class PostListComponent implements OnInit {
       this.filteredPosts = [...this.posts]; // If search term is empty, show all posts
     }
   }
+  
 }
